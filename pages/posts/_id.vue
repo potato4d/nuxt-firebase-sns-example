@@ -42,6 +42,14 @@ export default {
     await store.dispatch('INIT_USERS', params)
     await store.dispatch('INIT_SINGLE', params)
   },
+  head () {
+    return {
+      title: `${this.post.user.name}さんの投稿 - 'Nuxt Firebase SNS Mock`,
+      meta: [
+        { hid: 'description', name: 'description', content: this.post.body }
+      ]
+    }
+  },
   computed: {
     formattedPost () {
       return link(h(this.post ? this.post.body : ''))
