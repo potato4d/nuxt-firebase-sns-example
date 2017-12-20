@@ -1,22 +1,37 @@
-# nuxt-firebase-example
+# Nuxt & Firebase SSR, RTDB, Google Auth SNS Example
 
-> Nuxt.js project
+![image](https://user-images.githubusercontent.com/6993514/34213748-743d6dec-e5e3-11e7-9b1d-a69a12a5637b.gif)
+
+## Requirements
+
+Need the following environment variables.
+
+![Image](https://user-images.githubusercontent.com/6993514/34213945-27f5607e-e5e4-11e7-9761-d5e38e8cf209.png)
+
+```bash
+export APIKEY=
+export AUTHDOMAIN=
+export DATABASEURL=
+export PROJECTID=
+export STORAGEBUCKET=
+export MESSAGINGSENDERID=
+```
+
+recommendation: [direnv/direnv](https://github.com/direnv/direnv)
 
 ## Build Setup
 
 ``` bash
 # install dependencies
-$ npm install # Or yarn install
+$ yarn
 
 # serve with hot reload at localhost:3000
-$ npm run dev
+$ yarn dev
 
 # build for production and launch server
-$ npm run build
-$ npm start
+$ yarn build
+$ yarn start
 
 # generate static project
-$ npm run generate
+$ yarn generate
 ```
-
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
