@@ -45,7 +45,7 @@ const createStore = () => {
     actions: {
       async SET_CREDENTIAL ({commit}, { user }) {
         if (!user) return
-        await usersRef.child(user.email.replace('@', '_at_').replace('.', '_dot_')).set({
+        await usersRef.child(user.email.replace('@', '_at_').replace(/\./g, '_dot_')).set({
           name: user.displayName,
           email: user.email,
           icon: user.photoURL
