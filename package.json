@@ -18,7 +18,7 @@
     "bulma": "^0.6.1",
     "firebase": "^4.8.1",
     "htmlspecialchars": "^1.0.5",
-    "nuxt": "^1.4.1",
+    "nuxt": "^1.4.2",
     "vuexfire": "^2.3.0"
   },
   "devDependencies": {
