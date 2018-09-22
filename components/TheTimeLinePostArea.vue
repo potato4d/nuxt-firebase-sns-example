@@ -15,7 +15,7 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  data () {
+  data() {
     return {
       body: ''
     }
@@ -24,8 +24,11 @@ export default {
     ...mapGetters(['user'])
   },
   methods: {
-    async doPost () {
-      await this.$store.dispatch('ADD_POST', {email: this.user.email, body: this.body})
+    async doPost() {
+      await this.$store.dispatch('ADD_POST', {
+        email: this.user.email,
+        body: this.body
+      })
       this.body = ''
     }
   }

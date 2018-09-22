@@ -34,7 +34,7 @@ export default {
     post: Object
   },
   computed: {
-    formattedPost () {
+    formattedPost() {
       return link(h(this.post.body))
     }
   }

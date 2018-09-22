@@ -19,40 +19,44 @@ const createStore = () => {
     },
     getters: {
       posts: state => {
-        return state.posts.map((post) => {
-          post.user = state.users.find((user) => user.email === post.from)
-          return post
-        }).reverse()
+        return state.posts
+          .map(post => {
+            post.user = state.users.find(user => user.email === post.from)
+            return post
+          })
+          .reverse()
       },
       post: state => {
         const post = state.post
         if (!post) return null
-        post.user = state.users.find((user) => user.email === post.from)
+        post.user = state.users.find(user => user.email === post.from)
         return post
       },
       users: state => state.users,
       user: state => state.user
     },
     mutations: {
-      setCredential (state, { user }) {
+      setCredential(state, { user }) {
         state.user = user
       },
-      savePost (state, { post }) {
+      savePost(state, { post }) {
         state.post = post
       },
       ...firebaseMutations
     },
     actions: {
-      async SET_CREDENTIAL ({commit}, { user }) {
+      async SET_CREDENTIAL({ commit }, { user }) {
         if (!user) return
-        await usersRef.child(user.email.replace('@', '_at_').replace(/\./g, '_dot_')).set({
-          name: user.displayName,
-          email: user.email,
-          icon: user.photoURL
-        })
+        await usersRef
+          .child(user.email.replace('@', '_at_').replace(/\./g, '_dot_'))
+          .set({
+            name: user.displayName,
+            email: user.email,
+            icon: user.photoURL
+          })
         commit('setCredential', { user })
       },
-      async INIT_SINGLE ({commit}, { id }) {
+      async INIT_SINGLE({ commit }, { id }) {
         const snapshot = await postsRef.child(id).once('value')
         commit('savePost', { post: snapshot.val() })
       },
@@ -68,7 +72,7 @@ const createStore = () => {
           body
         })
       }),
-      callAuth () {
+      callAuth() {
         firebase.auth().signInWithRedirect(provider)
       }
     }

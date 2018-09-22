@@ -38,11 +38,11 @@ import { mapGetters } from 'vuex'
 
 export default {
   layout: 'single',
-  async asyncData ({ params, store }) {
+  async asyncData({ params, store }) {
     await store.dispatch('INIT_USERS', params)
     await store.dispatch('INIT_SINGLE', params)
   },
-  head () {
+  head() {
     return {
       title: `${this.post.user.name}さんの投稿 - 'Nuxt Firebase SNS Mock`,
       meta: [
@@ -51,7 +51,7 @@ export default {
     }
   },
   computed: {
-    formattedPost () {
+    formattedPost() {
       return link(h(this.post ? this.post.body : ''))
     },
     ...mapGetters(['post'])

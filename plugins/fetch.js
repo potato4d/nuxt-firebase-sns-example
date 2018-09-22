@@ -1,6 +1,6 @@
 import auth from '~/plugins/auth'
 
-export default async function ({ store }) {
+export default async function({ store }) {
   if (process.browser) {
     alert(1)
     let user

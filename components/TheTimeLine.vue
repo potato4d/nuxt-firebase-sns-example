@@ -30,7 +30,7 @@ export default {
   height: calc(100vh - 76px);
 }
 
-.timeline .posts{
+.timeline .posts {
   height: calc(100% - 36px);
   overflow-y: auto;
 }
@@ -40,7 +40,11 @@ export default {
 }
 
 @keyframes slideIn {
-  0% {opacity: 0.0}
-  100% {opacity: 1.0}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>
