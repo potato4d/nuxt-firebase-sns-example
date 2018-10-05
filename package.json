@@ -10,7 +10,7 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "heroku-postbuild": "npm run build",
-    "format": "prettier './{components,layouts,middleware,pages,plugins,store}/**/*.{js,vue}' --write"
+    "format": "prettier './app/**/*.{js,vue}' --write"
   },
   "dependencies": {
     "autolinker": "^1.6.0",
