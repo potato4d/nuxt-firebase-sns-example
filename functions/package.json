@@ -1,0 +1,21 @@
+{
+  "name": "nuxt-firebase-example-functions",
+  "version": "1.0.0",
+  "description": "Nuxt.js project",
+  "author": "HANATANI Takuma <mail@potato4d.me>",
+  "private": true,
+  "dependencies": {
+    "express": "^4.16.3",
+    "firebase-admin": "^6.0.0",
+    "firebase-functions": "^2.0.5",
+    "nuxt": "^2.1.0",
+    "autolinker": "^1.6.0",
+    "bulma": "^0.6.1",
+    "firebase": "^4.8.1",
+    "htmlspecialchars": "^1.0.5",
+    "vuexfire": "^2.3.0"
+  },
+  "engines": {
+    "node": "8"
+  }
+}

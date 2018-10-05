@@ -6,11 +6,15 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "heroku-postbuild": "npm run build",
-    "format": "prettier './{components,layouts,middleware,pages,plugins,store}/**/*.{js,vue}' --write"
+    "build:nuxt": "nuxt build",
+    "heroku-postbuild": "npm run build # for Heroku",
+    "build": "yarn clean;yarn build:nuxt;yarn copy # for Firebase",
+    "clean": "rm -rf {dist,.nuxt}",
+    "copy": "mkdir dist;cp -R functions dist/server;cp -R app/static/ dist/client;cp -R .nuxt dist/server;cp -R dist/server/.nuxt/dist dist/client/assets",
+    "format": "prettier './app/**/*.{js,vue}' --write",
+    "deploy": "firebase deploy"
   },
   "dependencies": {
     "autolinker": "^1.6.0",
@@ -21,6 +25,7 @@
     "vuexfire": "^2.3.0"
   },
   "devDependencies": {
+    "firebase-tools": "^5.0.0",
     "prettier": "^1.14.3"
   },
   "prettier": {

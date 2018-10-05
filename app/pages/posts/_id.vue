@@ -41,12 +41,18 @@ export default {
   async asyncData({ params, store }) {
     await store.dispatch('INIT_USERS', params)
     await store.dispatch('INIT_SINGLE', params)
+    return {
+      id: params.id
+    }
   },
   head() {
     return {
       title: `${this.post.user.name}さんの投稿 - 'Nuxt Firebase SNS Mock`,
       meta: [
         { hid: 'description', name: 'description', content: this.post.body }
+      ],
+      link: [
+        { rel: "canonical", href: `https://nuxt-firebase-sns-example.potato4d.me/posts/${this.id}`}
       ]
     }
   },
