@@ -1,11 +1,12 @@
 const webpack = require('webpack')
 
-module.exports = {
+export default {
+  srcDir: 'app',
   /*
   ** Headers of the page
   */
   head: {
-    title: 'Nuxt Firebase SNS Mock',
+    title: 'Nuxt Firebase SNS Example',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
