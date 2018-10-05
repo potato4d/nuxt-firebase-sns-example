@@ -35,5 +35,8 @@ export default {
     PROJECTID: process.env.PROJECTID,
     STORAGEBUCKET: process.env.STORAGEBUCKET,
     MESSAGINGSENDERID: process.env.MESSAGINGSENDERID
+  },
+  build: {
+    publicPath: '/assets/',
   }
 }

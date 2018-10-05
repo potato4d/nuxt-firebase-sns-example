@@ -17,6 +17,13 @@ import TheUserInfo from '~/components/TheUserInfo.vue'
 import { mapGetters } from 'vuex'
 
 export default {
+  head() {
+    return {
+      link: [
+        { rel: "canonical", href: "https://nuxt-firebase-sns-example.potato4d.me/"}
+      ]
+    }
+  },
   data() {
     return {
       isLoaded: false

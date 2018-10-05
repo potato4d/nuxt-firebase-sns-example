@@ -1,4 +1,4 @@
-# Nuxt & Firebase SSR, RTDB, Google Auth SNS Example
+# Nuxt & Firebase(Hosting and Functions SSR), RTDB, Google Auth SNS Example
 
 ![image](https://user-images.githubusercontent.com/6993514/34213748-743d6dec-e5e3-11e7-9b1d-a69a12a5637b.gif)
 
@@ -31,7 +31,33 @@ $ yarn dev
 # build for production and launch server
 $ yarn build
 $ yarn start
+```
 
-# generate static project
-$ yarn generate
+## Deploy to Firebase
+
+This application can also be launched with the normal Node.js application.
+However, by using Firebase Hosting and Firebase Functions, it can be used efficiently in a serverless environment.
+
+### setup project
+
+```
+$ yarn firebase init
+```
+
+
+### setup env
+
+```bash
+firebase functions:config:set environment.apikey=""
+firebase functions:config:set environment.authdomain=""
+firebase functions:config:set environment.databaseurl=""
+firebase functions:config:set environment.projectid=""
+firebase functions:config:set environment.storagebucket=""
+firebase functions:config:set environment.messagingsenderid=""
+```
+
+### deploy
+
+```
+$ yarn deploy
 ```
