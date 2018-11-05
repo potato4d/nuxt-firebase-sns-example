@@ -3,7 +3,13 @@
     <TheTimeLinePostArea v-if="user" />
     <ul class="posts">
       <transition-group name="post">
-        <Post class="post" :post="post" :key="post['.key']" v-for="post in posts" v-if="post.user" />
+        <Post
+          class="post"
+          :post="post"
+          :key="post['.key']"
+          v-for="post in posts"
+          v-if="post.user"
+        />
       </transition-group>
     </ul>
   </div>

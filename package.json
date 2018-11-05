@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "firebase-tools": "^5.0.0",
-    "prettier": "^1.14.3"
+    "prettier": "^1.15.1"
   },
   "prettier": {
     "semi": false,

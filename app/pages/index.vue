@@ -4,9 +4,7 @@
       <TheUserInfo class="column is-narrow is-3" />
       <TheTimeLine class="column is-narrow is-9" />
     </div>
-    <div class="loading-wrapper" v-else>
-      <div class="loading"></div>
-    </div>
+    <div class="loading-wrapper" v-else><div class="loading"></div></div>
   </div>
 </template>
 
@@ -20,7 +18,10 @@ export default {
   head() {
     return {
       link: [
-        { rel: "canonical", href: "https://nuxt-firebase-sns-example.potato4d.me/"}
+        {
+          rel: 'canonical',
+          href: 'https://nuxt-firebase-sns-example.potato4d.me/'
+        }
       ]
     }
   },

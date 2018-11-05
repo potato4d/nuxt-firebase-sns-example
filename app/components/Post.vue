@@ -1,15 +1,12 @@
 <template lang="html">
   <li class="media" v-if="post.user">
     <figure class="media-left">
-      <p class="image is-64x64">
-        <img :src="post.user.icon">
-      </p>
+      <p class="image is-64x64"><img :src="post.user.icon" /></p>
     </figure>
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>{{post.user.name}}</strong>
-          <br>
+          <strong>{{ post.user.name }}</strong> <br />
           <span v-html="formattedPost" />
         </p>
       </div>
@@ -17,7 +14,12 @@
         <div class="level-left"></div>
         <div class="level-right">
           <a class="level-item">
-            <a target="_blank" :href="`/posts/${post['.key']}`" class="icon is-small"><i class="fa fa-eye"></i></a>
+            <a
+              target="_blank"
+              :href="`/posts/${post['.key']}`"
+              class="icon is-small"
+              ><i class="fa fa-eye"></i
+            ></a>
           </a>
         </div>
       </nav>
@@ -41,5 +43,4 @@ export default {
 }
 </script>
 
-<style lang="css">
-</style>
+<style lang="css"></style>

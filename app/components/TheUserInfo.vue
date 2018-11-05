@@ -2,14 +2,12 @@
   <div class="userinfo">
     <div class="media" v-if="user">
       <figure class="media-left">
-        <p class="image is-64x64">
-          <img :src="user.photoURL">
-        </p>
+        <p class="image is-64x64"><img :src="user.photoURL" /></p>
       </figure>
       <div class="media-content">
         <div class="content">
           <p>
-            <strong>{{user.displayName}}</strong>
+            <strong>{{ user.displayName }}</strong>
           </p>
         </div>
       </div>
@@ -33,5 +31,4 @@ export default {
 }
 </script>
 
-<style lang="css">
-</style>
+<style lang="css"></style>
