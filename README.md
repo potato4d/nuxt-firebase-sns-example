@@ -1,6 +1,6 @@
 # Nuxt & Firebase(Hosting and Functions SSR), RTDB, Google Auth SNS Example
 
-![image](https://user-images.githubusercontent.com/6993514/34213748-743d6dec-e5e3-11e7-9b1d-a69a12a5637b.gif)
+[![Image from Gyazo](https://i.gyazo.com/e9a3fe2379a2896b4f3b882d833d981c.gif)](https://gyazo.com/e9a3fe2379a2896b4f3b882d833d981c)
 
 ## Requirements
 
