@@ -7,7 +7,7 @@
       <div class="content">
         <p>
           <strong>{{ post.user.name }}</strong> <br />
-          <span v-html="formattedPost" />
+          <span class="body" v-html="formattedPost" />
         </p>
       </div>
       <nav class="level is-mobile">
@@ -43,4 +43,17 @@ export default {
 }
 </script>
 
-<style lang="css"></style>
+<style scoped>
+img {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.body {
+  display: inline-block;
+  margin-top: 6px;
+}
+</style>

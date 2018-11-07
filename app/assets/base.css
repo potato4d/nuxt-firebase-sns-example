@@ -3,7 +3,7 @@
 }
 
 html, body, #app, #__nuxt {
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Source Sans Pro", Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -19,14 +19,15 @@ html, body, #app, #__nuxt {
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  /* font-family: 'Avenir', Helvetica, Arial, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  padding: 32px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .container,
@@ -50,9 +51,26 @@ ul {
 
 li {
   display: inline-block;
-  margin: 0 10px;
+  margin: 0 16px;
 }
 
 a {
-  color: #42b983;
+  color: #1DA1F2;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html body .button.is-primary {
+  background: #1da1f2;
+}
+
+html body .button.is-primary:hover {
+  background: #0980CF;
+}
+
+.button.is-primary[disabled] {
+  background: #1da1f2;
+  opacity: 0.6;
 }

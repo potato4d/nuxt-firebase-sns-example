@@ -15,7 +15,8 @@ const createStore = () => {
       user: null,
       post: null,
       users: [],
-      posts: []
+      posts: [],
+      isLoaded: false
     },
     getters: {
       posts: state => {
@@ -33,7 +34,8 @@ const createStore = () => {
         return post
       },
       users: state => state.users,
-      user: state => state.user
+      user: state => state.user,
+      isLoaded: state => state.isLoaded
     },
     mutations: {
       setCredential(state, { user }) {
@@ -41,6 +43,9 @@ const createStore = () => {
       },
       savePost(state, { post }) {
         state.post = post
+      },
+      setIsLoaded(state, next) {
+        state.isLoaded = !!next
       },
       ...firebaseMutations
     },
@@ -74,6 +79,9 @@ const createStore = () => {
       }),
       callAuth() {
         firebase.auth().signInWithRedirect(provider)
+      },
+      loadComplete({ commit }) {
+        commit('setIsLoaded', true)
       }
     }
   })

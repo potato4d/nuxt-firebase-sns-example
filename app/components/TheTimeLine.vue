@@ -1,9 +1,14 @@
 <template lang="html">
-  <div class="timeline">
-    <TheTimeLinePostArea v-if="user" />
-    <ul class="posts">
+  <div class="timeline" style="padding-top: 0;">
+    <TheTimeLinePostArea class="post-area" v-if="!!user" />
+    <ul
+      class="posts"
+      :style="{
+        'margin-top': !!user ? 'auto' : '32px'
+      }"
+    >
       <transition-group name="post">
-        <Post
+        <AppPost
           class="post"
           :post="post"
           :key="post['.key']"
@@ -16,13 +21,13 @@
 </template>
 
 <script>
-import Post from '~/components/Post.vue'
+import AppPost from '~/components/AppPost.vue'
 import { mapGetters } from 'vuex'
 import TheTimeLinePostArea from '~/components/TheTimeLinePostArea.vue'
 
 export default {
   components: {
-    Post,
+    AppPost,
     TheTimeLinePostArea
   },
   computed: {
@@ -32,17 +37,14 @@ export default {
 </script>
 
 <style scoped>
-.timeline {
-  height: calc(100vh - 76px);
-}
-
-.timeline .posts {
-  height: calc(100% - 36px);
-  overflow-y: auto;
-}
-
 .post-enter-active {
   animation: slideIn 0.3s linear;
+}
+
+.posts {
+  background: #fff;
+  padding-top: 12px;
+  border: solid 1px #e6e6e6;
 }
 
 @keyframes slideIn {
