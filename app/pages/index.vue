@@ -55,6 +55,6 @@ export default {
 .container {
   display: flex;
   align-items: flex-start;
-  flex-direction: column;
+  /* flex-direction: column; */
 }
 </style>

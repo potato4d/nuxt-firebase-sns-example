@@ -4,14 +4,15 @@
     <ul
       class="posts"
       :style="{
-        'margin-top': !!user ? 'auto' : '32px'
+        'margin-top': !!user ? 'auto' : '32px',
+        'padding-bottom': '16px'
       }"
     >
       <transition-group name="post">
         <AppPost
           class="post"
           :post="post"
-          :key="post['.key']"
+          :key="post.id"
           v-for="post in posts"
           v-if="post.user"
         />

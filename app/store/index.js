@@ -2,9 +2,15 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import firebase from '~/plugins/firebase'
 import { firebaseMutations, firebaseAction } from 'vuexfire'
-const db = firebase.database()
-const usersRef = db.ref('/users')
-const postsRef = db.ref('/posts')
+const firestore = firebase.firestore()
+
+if (process.browser) {
+  const settings = { timestampsInSnapshots: true }
+  firestore.settings(settings)
+}
+
+const usersCollection = firestore.collection('users')
+const postsCollection = firestore.collection('posts').orderBy('createdAt', 'desc')
 const provider = new firebase.auth.GoogleAuthProvider()
 
 Vue.use(Vuex)
@@ -25,7 +31,6 @@ const createStore = () => {
             post.user = state.users.find(user => user.email === post.from)
             return post
           })
-          .reverse()
       },
       post: state => {
         const post = state.post
@@ -52,8 +57,8 @@ const createStore = () => {
     actions: {
       async SET_CREDENTIAL({ commit }, { user }) {
         if (!user) return
-        await usersRef
-          .child(user.email.replace('@', '_at_').replace(/\./g, '_dot_'))
+        await usersCollection
+          .doc(user.email.replace('@', '_at_').replace(/\./g, '_dot_'))
           .set({
             name: user.displayName,
             email: user.email,
@@ -62,19 +67,21 @@ const createStore = () => {
         commit('setCredential', { user })
       },
       async INIT_SINGLE({ commit }, { id }) {
-        const snapshot = await postsRef.child(id).once('value')
+        const snapshot = await firestore.collection('posts').doc(id).once('value')
         commit('savePost', { post: snapshot.val() })
       },
       INIT_USERS: firebaseAction(({ bindFirebaseRef }) => {
-        bindFirebaseRef('users', usersRef)
+        bindFirebaseRef('users', usersCollection)
       }),
       INIT_POSTS: firebaseAction(({ bindFirebaseRef }) => {
-        bindFirebaseRef('posts', postsRef)
+        bindFirebaseRef('posts', postsCollection)
       }),
-      ADD_POST: firebaseAction((ctx, { email, body }) => {
-        postsRef.push({
+      ADD_POST: firebaseAction((ctx, { id, email, body, createdAt }) => {
+        firestore.collection('posts').doc(`${id}`).set({
+          id,
           from: email,
-          body
+          body,
+          createdAt
         })
       }),
       callAuth() {

@@ -18,6 +18,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import dayjs from 'dayjs'
+import { uniq } from '~/utils/uniq'
 
 export default {
   data() {
@@ -32,8 +34,10 @@ export default {
     async doPost() {
       if (!this.body) return
       await this.$store.dispatch('ADD_POST', {
+        id: `${3000000000+dayjs().unix()}-${uniq()}`,
         email: this.user.email,
-        body: this.body
+        body: this.body,
+        createdAt: 3000000000+dayjs().unix()
       })
       this.body = ''
     }

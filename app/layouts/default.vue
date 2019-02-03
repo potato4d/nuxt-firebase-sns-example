@@ -26,9 +26,9 @@ export default {
 .wrapper {
   width: 100vw;
   min-height: 100vh;
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   background: #fff;
   padding: 32px;
 }
