@@ -1,5 +1,5 @@
-import { v4 as uuid } from 'uuid'
+import uuid from 'uuid'
 
 export function uniq() {
-  return uuid().replace(/-/g, '')
+  return uuid.v4().replace(/-/g, '')
 }

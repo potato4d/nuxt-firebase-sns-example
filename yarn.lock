@@ -887,7 +887,7 @@
     "@babel/runtime" "^7.3.1"
     "@vue/babel-preset-jsx" "^1.0.0-beta.2"
 
-"@nuxt/builder@2.4.2":
+"@nuxt/builder@^2.3.0":
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/@nuxt/builder/-/builder-2.4.2.tgz#5c88ace4b152c77f78d0231aa1a9ea5600638a5f"
   integrity sha512-SLTRkCogmWo91urrkWNsUJE1CEG0q6YJwJt7Hplt/zTYqoj1ftWkHcO8pjJIvFNQnwUwH6YFv39GrfePhe7/uQ==
@@ -906,7 +906,7 @@
     serialize-javascript "^1.6.1"
     upath "^1.1.0"
 
-"@nuxt/cli@2.4.2":
+"@nuxt/cli@^2.3.0":
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/@nuxt/cli/-/cli-2.4.2.tgz#01442954e31c9ca25bb2d2b456053ffe5da5722b"
   integrity sha512-jy4EpUR8Uc3MWv34qY8hXgDLXKI3RE+Bwyq9d73/qrZCM0u18Vs85pagEtRXYfbUzI3NbW7blLi26FUeYyrthQ==
@@ -922,6 +922,13 @@
     std-env "^2.2.1"
     wrap-ansi "^4.0.0"
 
+"@nuxt/common@^2.3.0":
+  version "2.3.4"
+  resolved "https://registry.yarnpkg.com/@nuxt/common/-/common-2.3.4.tgz#04b95e640b66a7dbb9c3e5979071180a5c13797b"
+  integrity sha512-vyvlaL2+LZATFkURIQBTGn8H7IFdV904s7bb0HlBDZYP96opLmprggdqa2OM7MTh8K0LXF8CYMDiL1gkJSbwUw==
+  dependencies:
+    consola "^2.3.0"
+
 "@nuxt/config@2.4.2":
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/@nuxt/config/-/config-2.4.2.tgz#10d9535685c7f189480a3d8357e7882679f7f5f0"
@@ -931,7 +938,7 @@
     consola "^2.3.2"
     std-env "^2.2.1"
 
-"@nuxt/core@2.4.2":
+"@nuxt/core@^2.3.0":
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/@nuxt/core/-/core-2.4.2.tgz#f57274553b47fa29e66505bc688de69fbd4513e8"
   integrity sha512-QgR07vEyc4LyDcrUWSSxqSNxzJp4oNa9Lb6fXj3/MUFOSUFf9AqoSbmKa/aLEI8pZP7XhMQsSaHuT16RAGfH/A==
@@ -965,7 +972,7 @@
     error-stack-parser "^2.0.0"
     string-width "^2.0.0"
 
-"@nuxt/generator@2.4.2":
+"@nuxt/generator@^2.3.0":
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/@nuxt/generator/-/generator-2.4.2.tgz#f2b9cab03920b67ff7de0651783450dff38e25a4"
   integrity sha512-d/jgQvTI6+1EX49Cxd7IhfLvjOL5VMlm2KpJ/j+LvBs41TJFaORczDsZBuHcxPCGSWkmh4JVKeugmdBplZ+vOw==
@@ -975,15 +982,6 @@
     consola "^2.3.2"
     fs-extra "^7.0.1"
     html-minifier "^3.5.21"
-
-"@nuxt/opencollective@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@nuxt/opencollective/-/opencollective-0.2.1.tgz#8290f1220072637e575c3935733719a78ad2d056"
-  integrity sha512-NP2VSUKRFGutbhWeKgIU0MnY4fmpH8UWxxwTJNPurCQ5BeWhOxp+Gp5ltO39P/Et/J2GYGb3+ALNqZJ+5cGBBw==
-  dependencies:
-    chalk "^2.4.1"
-    consola "^2.3.0"
-    node-fetch "^2.3.0"
 
 "@nuxt/server@2.4.2":
   version "2.4.2"
@@ -1044,7 +1042,7 @@
     vue-meta "^1.5.8"
     vue-server-renderer "^2.5.22"
 
-"@nuxt/webpack@2.4.2":
+"@nuxt/webpack@^2.3.0":
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/@nuxt/webpack/-/webpack-2.4.2.tgz#cba2b878a1c429350296373b65b2f3b5e2e092c0"
   integrity sha512-TD0/9lima1pII1YP+YqZR0wBrpT9LoMhNmuUdTjwe4xAT/Bgjce4tVElbELmxBETJxtUNQpPCqPT32dFqZDTng==
@@ -6090,7 +6088,7 @@ node-fetch@^1.0.1:
     encoding "^0.1.11"
     is-stream "^1.0.1"
 
-node-fetch@^2.2.0, node-fetch@^2.3.0:
+node-fetch@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.3.0.tgz#1a1d940bbfb916a1d3e0219f037e89e71f8c5fa5"
   integrity sha512-MOd8pV3fxENbryESLgVIeaGKrdl+uaYhCSSVkjeOb/31/njTpcis5aWfdqgNlHIrKOLRbMnfPINPOML2CIFeXA==
@@ -6264,17 +6262,17 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nuxt@^2.4.0:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.4.2.tgz#72e377e1cad3c607f7ec900511f73ecd6259d0ac"
-  integrity sha512-8zwwUGQtMKgHNfV8BxPYd0cx+XNseBM4rwToQbJL/yODsy7zlm6MfzVjLDY+wPU9Kaz7MiQ78RJZIYW0vVjpEQ==
+nuxt@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.3.0.tgz#869043315799a660f371294dab62584ac68cfa54"
+  integrity sha512-qZMSWW8oCL1XjZ1n1uqTISLy+6pgUcRXOd6CA07+nvTeQfx5mw84SQ36rZGNIfvKbELvKjO7K3vzJW2nbt23nQ==
   dependencies:
-    "@nuxt/builder" "2.4.2"
-    "@nuxt/cli" "2.4.2"
-    "@nuxt/core" "2.4.2"
-    "@nuxt/generator" "2.4.2"
-    "@nuxt/opencollective" "^0.2.1"
-    "@nuxt/webpack" "2.4.2"
+    "@nuxt/builder" "^2.3.0"
+    "@nuxt/cli" "^2.3.0"
+    "@nuxt/common" "^2.3.0"
+    "@nuxt/core" "^2.3.0"
+    "@nuxt/generator" "^2.3.0"
+    "@nuxt/webpack" "^2.3.0"
 
 oauth-sign@~0.8.2:
   version "0.8.2"

@@ -22,7 +22,7 @@
     "dayjs": "^1.8.2",
     "firebase": "^4.8.1",
     "htmlspecialchars": "^1.0.5",
-    "nuxt": "^2.4.0",
+    "nuxt": "2.3.0",
     "uuid": "^3.3.2",
     "vuexfire": "3.0.0-alpha.9"
   },

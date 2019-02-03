@@ -8,12 +8,14 @@
     "express": "^4.16.3",
     "firebase-admin": "^6.0.0",
     "firebase-functions": "^2.0.5",
-    "nuxt": "^2.1.0",
     "autolinker": "^1.6.0",
-    "bulma": "^0.6.1",
+    "bulma": "0.6.1",
+    "dayjs": "^1.8.2",
     "firebase": "^4.8.1",
     "htmlspecialchars": "^1.0.5",
-    "vuexfire": "^2.3.0"
+    "nuxt": "^2.4.0",
+    "uuid": "^3.3.2",
+    "vuexfire": "3.0.0-alpha.9"
   },
   "engines": {
     "node": "8"
