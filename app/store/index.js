@@ -10,7 +10,9 @@ if (process.browser) {
 }
 
 const usersCollection = firestore.collection('users')
-const postsCollection = firestore.collection('posts').orderBy('createdAt', 'desc')
+const postsCollection = firestore
+  .collection('posts')
+  .orderBy('createdAt', 'desc')
 const provider = new firebase.auth.GoogleAuthProvider()
 
 Vue.use(Vuex)
@@ -26,11 +28,10 @@ const createStore = () => {
     },
     getters: {
       posts: state => {
-        return state.posts
-          .map(post => {
-            post.user = state.users.find(user => user.email === post.from)
-            return post
-          })
+        return state.posts.map(post => {
+          post.user = state.users.find(user => user.email === post.from)
+          return post
+        })
       },
       post: state => {
         const post = state.post
@@ -67,7 +68,10 @@ const createStore = () => {
         commit('setCredential', { user })
       },
       async INIT_SINGLE({ commit }, { id }) {
-        const snapshot = await firestore.collection('posts').doc(id).once('value')
+        const snapshot = await firestore
+          .collection('posts')
+          .doc(id)
+          .once('value')
         commit('savePost', { post: snapshot.val() })
       },
       INIT_USERS: firebaseAction(({ bindFirebaseRef }) => {
@@ -77,12 +81,15 @@ const createStore = () => {
         bindFirebaseRef('posts', postsCollection)
       }),
       ADD_POST: firebaseAction((ctx, { id, email, body, createdAt }) => {
-        firestore.collection('posts').doc(`${id}`).set({
-          id,
-          from: email,
-          body,
-          createdAt
-        })
+        firestore
+          .collection('posts')
+          .doc(`${id}`)
+          .set({
+            id,
+            from: email,
+            body,
+            createdAt
+          })
       }),
       callAuth() {
         firebase.auth().signInWithRedirect(provider)

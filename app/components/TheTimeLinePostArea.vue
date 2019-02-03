@@ -34,10 +34,10 @@ export default {
     async doPost() {
       if (!this.body) return
       await this.$store.dispatch('ADD_POST', {
-        id: `${3000000000+dayjs().unix()}-${uniq()}`,
+        id: `${3000000000 + dayjs().unix()}-${uniq()}`,
         email: this.user.email,
         body: this.body,
-        createdAt: 3000000000+dayjs().unix()
+        createdAt: 3000000000 + dayjs().unix()
       })
       this.body = ''
     }
