@@ -16,7 +16,7 @@
           <a class="level-item">
             <a
               target="_blank"
-              :href="`/posts/${post['.key']}`"
+              :href="`/posts/${post.id}`"
               class="icon is-small"
               ><i class="fa fa-eye"></i
             ></a>
