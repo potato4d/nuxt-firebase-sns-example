@@ -14,10 +14,7 @@
         <div class="level-left"></div>
         <div class="level-right">
           <a class="level-item">
-            <a
-              target="_blank"
-              :href="`/posts/${post.id}`"
-              class="icon is-small"
+            <a target="_blank" :href="`/posts/${post.id}`" class="icon is-small"
               ><i class="fa fa-eye"></i
             ></a>
           </a>
