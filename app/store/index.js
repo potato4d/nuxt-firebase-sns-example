@@ -1,5 +1,3 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
 import firebase from '~/plugins/firebase'
 import { firebaseMutations, firebaseAction } from 'vuexfire'
 const firestore = firebase.firestore()
@@ -14,8 +12,6 @@ const postsCollection = firestore
   .collection('posts')
   .orderBy('createdAt', 'desc')
 const provider = new firebase.auth.GoogleAuthProvider()
-
-Vue.use(Vuex)
 
 export const state = () => ({
   user: null,
