@@ -1,5 +1,6 @@
 import firebase from '~/plugins/firebase'
 import { firebaseMutations, firebaseAction } from 'vuexfire'
+import cloneDeep from 'lodash.clonedeep'
 const firestore = firebase.firestore()
 
 if (process.browser) {
@@ -7,10 +8,6 @@ if (process.browser) {
   firestore.settings(settings)
 }
 
-const usersCollection = firestore.collection('users')
-const postsCollection = firestore
-  .collection('posts')
-  .orderBy('createdAt', 'desc')
 const provider = new firebase.auth.GoogleAuthProvider()
 
 export const state = () => ({
@@ -53,8 +50,10 @@ export const mutations = {
 }
 
 export const actions = {
-  async SET_CREDENTIAL({ commit }, { user }) {
+  async setCredential({ commit }, { user }) {
     if (!user) return
+    user = cloneDeep(user)
+    const usersCollection = firestore.collection('users')
     await usersCollection
       .doc(user.email.replace('@', '_at_').replace(/\./g, '_dot_'))
       .set({
@@ -64,20 +63,24 @@ export const actions = {
       })
     commit('setCredential', { user })
   },
-  async INIT_SINGLE({ commit }, { id }) {
+  async initSingle({ commit }, { id }) {
     const snapshot = await firestore
       .collection('posts')
       .doc(id)
-      .once('value')
-    commit('savePost', { post: snapshot.val() })
+      .get()
+    commit('savePost', { post: snapshot.data() })
   },
-  INIT_USERS: firebaseAction(({ bindFirebaseRef }) => {
+  initUsers: firebaseAction(({ bindFirebaseRef }) => {
+    const usersCollection = firestore.collection('users')
     bindFirebaseRef('users', usersCollection)
   }),
-  INIT_POSTS: firebaseAction(({ bindFirebaseRef }) => {
+  initPosts: firebaseAction(({ bindFirebaseRef }) => {
+    const postsCollection = firestore
+      .collection('posts')
+      .orderBy('createdAt', 'desc')
     bindFirebaseRef('posts', postsCollection)
   }),
-  ADD_POST: firebaseAction((ctx, { id, email, body, createdAt }) => {
+  addPost: firebaseAction((ctx, { id, email, body, createdAt }) => {
     firestore
       .collection('posts')
       .doc(`${id}`)

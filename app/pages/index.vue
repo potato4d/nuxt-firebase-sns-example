@@ -34,11 +34,9 @@ export default {
     await Promise.all([
       this.user
         ? Promise.resolve()
-        : this.$store.dispatch('SET_CREDENTIAL', { user: user || null }),
-      this.posts.length
-        ? Promise.resolve()
-        : this.$store.dispatch('INIT_POSTS'),
-      this.users.length ? Promise.resolve() : this.$store.dispatch('INIT_USERS')
+        : this.$store.dispatch('setCredential', { user: user || null }),
+      this.posts.length ? Promise.resolve() : this.$store.dispatch('initPosts'),
+      this.users.length ? Promise.resolve() : this.$store.dispatch('initUsers')
     ])
     this.loadComplete()
   },

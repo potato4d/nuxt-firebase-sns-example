@@ -38,8 +38,8 @@ import { mapGetters } from 'vuex'
 export default {
   layout: 'single',
   async asyncData({ params, store }) {
-    await store.dispatch('INIT_USERS', params)
-    await store.dispatch('INIT_SINGLE', params)
+    await store.dispatch('initUsers', params)
+    await store.dispatch('initSingle', params)
     return {
       id: params.id
     }

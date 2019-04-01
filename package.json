@@ -20,14 +20,15 @@
     "autolinker": "^1.6.0",
     "bulma": "0.6.1",
     "dayjs": "^1.8.2",
-    "firebase": "^4.8.1",
+    "firebase": "^5.0.0",
+    "firebase-tools": "^6.5.0",
     "htmlspecialchars": "^1.0.5",
-    "nuxt": "2.0.0",
+    "lodash.clonedeep": "^4.5.0",
+    "nuxt": "2.4.0",
     "uuid": "^3.3.2",
     "vuexfire": "3.0.0-alpha.9"
   },
   "devDependencies": {
-    "firebase-tools": "^5.0.0",
     "prettier": "^1.15.1"
   },
   "prettier": {
