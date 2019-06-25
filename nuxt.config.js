@@ -1,5 +1,3 @@
-const webpack = require('webpack')
-
 export default {
   srcDir: 'app',
   /*
@@ -14,7 +12,6 @@ export default {
     ],
     link: [
       { rel: 'stylesheet', href: 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' },
-      { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css' },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
@@ -23,6 +20,9 @@ export default {
   */
   css: [
     '~/assets/base.css'
+  ],
+  plugins: [
+    '~/plugins/firebase'
   ],
   loading: { color: '#00d1b2' },
   /*

@@ -9,7 +9,6 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "build:nuxt": "nuxt build",
-    "heroku-postbuild": "npm run build # for Heroku",
     "build": "yarn clean;yarn build:nuxt;yarn copy # for Firebase",
     "clean": "rm -rf {dist,.nuxt}",
     "copy": "mkdir dist;cp -R functions dist/server;cp -R app/static/ dist/client;cp -R .nuxt dist/server;cp -R dist/server/.nuxt/dist dist/client/assets",
@@ -24,9 +23,8 @@
     "firebase-tools": "^6.5.0",
     "htmlspecialchars": "^1.0.5",
     "lodash.clonedeep": "^4.5.0",
-    "nuxt": "2.4.0",
-    "uuid": "^3.3.2",
-    "vuexfire": "3.0.0-alpha.9"
+    "nuxt": "^2.8.1",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "prettier": "^1.15.1"

@@ -12,65 +12,38 @@ html, body, #app, #__nuxt {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   margin: 0;
   padding: 0;
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  background: #292C34;
 }
 
 #app {
   /* font-family: 'Avenir', Helvetica, Arial, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+p {
+  margin: 0;
+}
+
 .container,
 .container .columns {
+  width: 100%;
   height: 100%;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  flex: 1;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
+  margin: 0;
   padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 16px;
-}
-
-a {
-  color: #1DA1F2;
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-html body .button.is-primary {
-  background: #1da1f2;
-}
-
-html body .button.is-primary:hover {
-  background: #0980CF;
-}
-
-.button.is-primary[disabled] {
-  background: #1da1f2;
-  opacity: 0.6;
 }
