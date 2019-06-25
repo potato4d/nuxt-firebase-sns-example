@@ -1,100 +1,122 @@
-import firebase from '~/plugins/firebase'
-import { firebaseMutations, firebaseAction } from 'vuexfire'
 import cloneDeep from 'lodash.clonedeep'
-const firestore = firebase.firestore()
-
-if (process.browser) {
-  const settings = { timestampsInSnapshots: true }
-  firestore.settings(settings)
-}
-
-const provider = new firebase.auth.GoogleAuthProvider()
+import dayjs from 'dayjs'
+import uuid from 'uuid/v4'
 
 export const state = () => ({
   user: null,
-  post: null,
   users: [],
   posts: [],
-  isLoaded: false
+  isFetching: false
 })
 
 export const getters = {
-  posts: state => {
-    return state.posts.map(post => {
-      post.user = state.users.find(user => user.email === post.from)
-      return post
-    })
-  },
-  post: state => {
-    const post = state.post
-    if (!post) return null
-    post.user = state.users.find(user => user.email === post.from)
-    return post
-  },
-  users: state => state.users,
   user: state => state.user,
-  isLoaded: state => state.isLoaded
+  posts: state => state.posts,
+  isFetching: state => state.isFetching
 }
 
 export const mutations = {
-  setCredential(state, { user }) {
-    state.user = user
+  setUser(state, { user }) {
+    state.user = cloneDeep(user)
   },
-  savePost(state, { post }) {
-    state.post = post
+  setUsers(state, { users }) {
+    state.users = users
   },
-  setIsLoaded(state, next) {
-    state.isLoaded = !!next
+  setPosts(state, { posts }) {
+    state.posts = [...posts]
   },
-  ...firebaseMutations
+  addPost(state, { post }) {
+    if (state.posts.find(p => p.id === post.id)) {
+      return
+    }
+    post.user = state.users.find(user => user.email === post.from)
+    state.posts = [...state.posts, post]
+  },
+  unshiftPost(state, { post }) {
+    if (state.posts.find(p => p.id === post.id)) {
+      return
+    }
+    post.user = state.users.find(user => user.email === post.from)
+    state.posts = [post, ...state.posts]
+  },
+  setIsFetching(state, next) {
+    state.isFetching = !!next
+  }
 }
 
+// export const mutations = {
+//   setCredential(state, { user }) {
+//     state.user = user
+//   },
+//   savePost(state, { post }) {
+//     state.post = post
+//   },
+//   setIsLoaded(state, next) {
+//     state.isLoaded = !!next
+//   },
+//   ...firebaseMutations
+// }
+
 export const actions = {
-  async setCredential({ commit }, { user }) {
-    if (!user) return
-    user = cloneDeep(user)
-    const usersCollection = firestore.collection('users')
-    await usersCollection
-      .doc(user.email.replace('@', '_at_').replace(/\./g, '_dot_'))
-      .set({
-        name: user.displayName,
-        email: user.email,
-        icon: user.photoURL
+  async nuxtServerInit({ commit }) {
+    let posts = []
+    let users = []
+    const [usersSnapshot, postsSnapshot] = await Promise.all([
+      this.$firestore.collection('users').get(),
+      this.$firestore
+        .collection('posts')
+        .orderBy('createdAt', 'desc')
+        .limit(20)
+        .get()
+    ])
+    usersSnapshot.forEach(user => {
+      users.push(user.data())
+    })
+    postsSnapshot.forEach(postSnapshot => {
+      const post = postSnapshot.data()
+      post.user = users.find(user => user.email === post.from)
+      posts.unshift(post)
+    })
+    commit('setUsers', { users })
+    commit('setPosts', { posts })
+  },
+  async fetchPosts({ commit, state }) {
+    if (state.setIsFetching) return
+    commit('setIsFetching', true)
+    try {
+      let posts = []
+      const postsSnapshot = await this.$firestore
+        .collection('posts')
+        .orderBy('createdAt', 'desc')
+        .startAfter(state.posts[0].createdAt)
+        .limit(20)
+        .get()
+      postsSnapshot.forEach(postSnapshot => {
+        const post = postSnapshot.data()
+        post.user = state.users.find(user => user.email === post.from)
+        posts.push(post)
       })
-    commit('setCredential', { user })
+      posts.forEach(post => {
+        commit('unshiftPost', { post })
+      })
+      return posts[0]
+    } catch (e) {
+    } finally {
+      commit('setIsFetching', false)
+    }
   },
-  async initSingle({ commit }, { id }) {
-    const snapshot = await firestore
-      .collection('posts')
-      .doc(id)
-      .get()
-    commit('savePost', { post: snapshot.data() })
-  },
-  initUsers: firebaseAction(({ bindFirebaseRef }) => {
-    const usersCollection = firestore.collection('users')
-    bindFirebaseRef('users', usersCollection)
-  }),
-  initPosts: firebaseAction(({ bindFirebaseRef }) => {
-    const postsCollection = firestore
-      .collection('posts')
-      .orderBy('createdAt', 'desc')
-    bindFirebaseRef('posts', postsCollection)
-  }),
-  addPost: firebaseAction((ctx, { id, email, body, createdAt }) => {
-    firestore
+  async sendPost({ commit, state }, { body }) {
+    const id = `${3000000000 + dayjs().unix()}-${uuid().replace(/-g/, '')}`
+    const from = state.user.email
+    const createdAt = 3000000000 + dayjs().unix()
+    this.$firestore
       .collection('posts')
       .doc(`${id}`)
       .set({
         id,
-        from: email,
+        from,
         body,
         createdAt
       })
-  }),
-  callAuth() {
-    firebase.auth().signInWithRedirect(provider)
-  },
-  loadComplete({ commit }) {
-    commit('setIsLoaded', true)
   }
 }
