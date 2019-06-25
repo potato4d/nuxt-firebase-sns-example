@@ -11,7 +11,8 @@ export const state = () => ({
 
 export const getters = {
   user: state => state.user,
-  posts: state => state.posts
+  posts: state => state.posts,
+  isFetching: state => state.isFetching
 }
 
 export const mutations = {
@@ -25,10 +26,16 @@ export const mutations = {
     state.posts = [...posts]
   },
   addPost(state, { post }) {
+    if (state.posts.find(p => p.id === post.id)) {
+      return
+    }
     post.user = state.users.find(user => user.email === post.from)
     state.posts = [...state.posts, post]
   },
   unshiftPost(state, { post }) {
+    if (state.posts.find(p => p.id === post.id)) {
+      return
+    }
     post.user = state.users.find(user => user.email === post.from)
     state.posts = [post, ...state.posts]
   },
@@ -77,6 +84,7 @@ export const actions = {
     if (state.setIsFetching) return
     commit('setIsFetching', true)
     try {
+      let posts = []
       const postsSnapshot = await this.$firestore
         .collection('posts')
         .orderBy('createdAt', 'desc')
@@ -86,8 +94,12 @@ export const actions = {
       postsSnapshot.forEach(postSnapshot => {
         const post = postSnapshot.data()
         post.user = state.users.find(user => user.email === post.from)
+        posts.push(post)
+      })
+      posts.forEach(post => {
         commit('unshiftPost', { post })
       })
+      return posts[0]
     } catch (e) {
     } finally {
       commit('setIsFetching', false)

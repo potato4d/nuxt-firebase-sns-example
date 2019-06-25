@@ -1,5 +1,5 @@
 <template>
-  <div class="talk">
+  <div class="talk" :data-id="post.id">
     <img width="40" style="border-radius: 50%;" :src="post.user.icon" />
     <div class="talk-content">
       <div class="talk-info">

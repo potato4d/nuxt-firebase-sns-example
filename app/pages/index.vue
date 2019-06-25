@@ -4,6 +4,7 @@
       <AppSidebar />
     </div>
     <div class="talk-area">
+      <AppTalkLoader v-if="$store.getters['isFetching']" />
       <AppTalk v-for="post in posts" :key="post.id" :post="post" />
       <AppForm />
     </div>
@@ -15,6 +16,7 @@ import auth from '~/plugins/auth'
 import dayjs from 'dayjs'
 import AppSidebar from '~/components/AppSidebar.vue'
 import AppTalk from '~/components/AppTalk.vue'
+import AppTalkLoader from '~/components/AppTalkLoader.vue'
 import AppForm from '~/components/AppForm.vue'
 
 export default {
@@ -37,7 +39,8 @@ export default {
   components: {
     AppSidebar,
     AppTalk,
-    AppForm
+    AppForm,
+    AppTalkLoader
     // TheTimeLine,
     // TheUserInfo
   },
@@ -63,7 +66,18 @@ export default {
           return
         }
         this.canLoad = false
-        this.$store.dispatch('fetchPosts')
+        this.$store.dispatch('fetchPosts').then(post => {
+          if (!post) {
+            return
+          }
+          requestAnimationFrame(() => {
+            const el = $(`[data-id="${post.id}"]`)
+            const rect = el.getBoundingClientRect()
+            $('html').scrollTo({
+              top: rect.top + window.pageYOffset + rect.height - 32
+            })
+          })
+        })
       } else {
         this.canLoad = true
       }
