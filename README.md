@@ -4,7 +4,7 @@
 [![donate: Patreon](https://img.shields.io/badge/donate-patreon-orange.svg?style=flat-square)](https://www.patreon.com/potato4d)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-[![Image from Gyazo](https://i.gyazo.com/e9a3fe2379a2896b4f3b882d833d981c.gif)](https://gyazo.com/e9a3fe2379a2896b4f3b882d833d981c)
+<img width="1359" alt="Screen Shot 2019-06-26 at 1 34 03" src="https://user-images.githubusercontent.com/6993514/60116335-cc5b0200-97b2-11e9-8390-d35d940f3d2e.png">
 
 <a href="https://patreon.com/potato4d">
   <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" height="50">
