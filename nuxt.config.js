@@ -34,9 +34,23 @@ export default {
     DATABASEURL: process.env.DATABASEURL,
     PROJECTID: process.env.PROJECTID,
     STORAGEBUCKET: process.env.STORAGEBUCKET,
-    MESSAGINGSENDERID: process.env.MESSAGINGSENDERID
+    MESSAGINGSENDERID: process.env.MESSAGINGSENDERID,
+    APPID: process.env.APPID
   },
   build: {
+    babel: {
+      presets({ isServer }) {
+        return [
+          [
+            require.resolve('@nuxt/babel-preset-app'),
+            {
+              buildTarget: isServer ? 'server' : 'client',
+              corejs: { version: 3 }
+            }
+          ]
+        ]
+      }
+    },
     publicPath: '/assets/',
   }
 }

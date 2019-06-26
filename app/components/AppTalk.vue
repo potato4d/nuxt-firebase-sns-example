@@ -1,9 +1,14 @@
 <template>
   <div class="talk" :data-id="post.id">
-    <img width="40" style="border-radius: 50%;" :src="post.user.icon" />
+    <img
+      v-if="post.user"
+      width="40"
+      style="border-radius: 50%;"
+      :src="post.user.icon"
+    />
     <div class="talk-content">
       <div class="talk-info">
-        <p>{{ post.user.name }}</p>
+        <p v-if="post.user">{{ post.user.name }}</p>
         <span>{{ post.createdAt | timestamp }}</span>
       </div>
       <div class="talk-body">

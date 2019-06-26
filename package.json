@@ -18,8 +18,9 @@
   "dependencies": {
     "autolinker": "^1.6.0",
     "bulma": "0.6.1",
+    "core-js": "3",
     "dayjs": "^1.8.2",
-    "firebase": "^5.0.0",
+    "firebase": "^6.2.3",
     "firebase-tools": "^6.5.0",
     "htmlspecialchars": "^1.0.5",
     "lodash.clonedeep": "^4.5.0",

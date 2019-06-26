@@ -23,6 +23,7 @@ export DATABASEURL=
 export PROJECTID=
 export STORAGEBUCKET=
 export MESSAGINGSENDERID=
+export APPID=
 ```
 
 recommendation: [direnv/direnv](https://github.com/direnv/direnv)
@@ -62,6 +63,7 @@ firebase functions:config:set environment.databaseurl=""
 firebase functions:config:set environment.projectid=""
 firebase functions:config:set environment.storagebucket=""
 firebase functions:config:set environment.messagingsenderid=""
+firebase functions:config:set environment.appid=""
 ```
 
 ### deploy

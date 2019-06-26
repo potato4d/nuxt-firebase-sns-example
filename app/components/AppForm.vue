@@ -42,7 +42,7 @@ export default {
   display: flex;
   position: sticky;
   bottom: 0;
-  background: #292c34;
+  background: #15202b;
 }
 
 .form-content {

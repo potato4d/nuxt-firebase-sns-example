@@ -14,13 +14,25 @@
 export default {
   data() {
     return {
-      user: null
+      user: null,
+      isLoggedIn: false
     }
   },
   async mounted() {
     const user = await this.auth()
     this.$store.commit('setUser', { user })
     this.user = user
+    if (this.user && !this.isLoggedIn) {
+      this.isLoggedIn = true
+      this.$firestore
+        .collection('users')
+        .doc(user.email.replace('@', '_at_').replace(/\./g, '_dot_'))
+        .set({
+          name: user.displayName,
+          email: user.email,
+          icon: user.photoURL
+        })
+    }
   },
   methods: {
     auth() {

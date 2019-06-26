@@ -1,5 +1,6 @@
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import 'firebase/firestore'
+import 'firebase/auth'
 
 if (!firebase.apps.length) {
   firebase.initializeApp({
@@ -8,7 +9,8 @@ if (!firebase.apps.length) {
     databaseURL: process.env.DATABASEURL,
     projectId: process.env.PROJECTID,
     storageBucket: process.env.STORAGEBUCKET,
-    messagingSenderId: process.env.MESSAGINGSENDERID
+    messagingSenderId: process.env.MESSAGINGSENDERID,
+    appId: process.env.APPID
   })
 }
 
