@@ -13,3 +13,6 @@ dist
 .envrc
 .firebase
 .firebaserc
+functions/package.json
+functions/yarn.lock
+firebase-debug.log
