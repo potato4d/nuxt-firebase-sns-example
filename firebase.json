@@ -7,7 +7,7 @@
     ],
     "rewrites": [
       {
-        "source": "**",
+        "source": "!/@(assets)/**",
         "function": "ssr"
       }
     ]

@@ -10,6 +10,7 @@ firebase-deploy:
 	# cd ./functions && yarn
 	cp -R functions dist/server
 	cp -R app/static/ dist/client
+	cp -R dist/client/assets/client/**.js dist/client/assets
 	cp -R .nuxt dist/server
 	cp -R dist/server/.nuxt/dist dist/client/assets
 	yarn firebase deploy
