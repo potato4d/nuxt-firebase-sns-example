@@ -2,18 +2,15 @@
   "name": "nuxt-firebase-example",
   "version": "1.0.0",
   "description": "Nuxt.js project",
-  "author": "HANATANI Takuma <mail@potato4d.me>",
+  "author": "Takuma HANATANI<mail@potato4d.me>",
   "private": true,
   "scripts": {
     "dev": "nuxt",
     "start": "nuxt start",
-    "generate": "nuxt generate",
-    "build:nuxt": "nuxt build",
-    "build": "yarn clean;yarn build:nuxt;yarn copy # for Firebase",
     "clean": "rm -rf {dist,.nuxt}",
-    "copy": "mkdir dist;cp -R functions dist/server;cp -R app/static/ dist/client;cp -R .nuxt dist/server;cp -R dist/server/.nuxt/dist dist/client/assets",
+    "build": "nuxt build",
     "format": "prettier './app/**/*.{js,vue}' --write",
-    "deploy": "firebase deploy"
+    "deploy": "make firebase-deploy"
   },
   "dependencies": {
     "autolinker": "^1.6.0",
@@ -25,7 +22,9 @@
     "htmlspecialchars": "^1.0.5",
     "lodash.clonedeep": "^4.5.0",
     "nuxt": "^2.8.1",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "firebase-admin": "^6.0.0",
+    "firebase-functions": "^3.0.1"
   },
   "devDependencies": {
     "prettier": "^1.15.1"
