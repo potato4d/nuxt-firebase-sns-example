@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nuxt",
     "start": "nuxt start",
-    "clean": "rm -rf {dist,.nuxt}",
+    "clean": "rm -rf {.firebase,.nuxt}",
     "build": "nuxt build",
     "format": "prettier './app/**/*.{js,vue}' --write",
     "deploy": "make firebase-deploy"

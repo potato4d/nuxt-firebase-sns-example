@@ -2,6 +2,6 @@
   "name": "nuxt-firebase-example-functions",
   "private": true,
   "engines": {
-    "node": "10"
+    "node": "8"
   }
 }

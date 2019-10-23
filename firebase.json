@@ -7,7 +7,7 @@
     ],
     "rewrites": [
       {
-        "source": "!/@(assets)/**",
+        "source": "!/**/*.@(js|ico|json)",
         "function": "ssr"
       }
     ]

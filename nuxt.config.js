@@ -50,7 +50,6 @@ export default {
           ]
         ]
       }
-    },
-    publicPath: '/assets/',
+    }
   }
 }
