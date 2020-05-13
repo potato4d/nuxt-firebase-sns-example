@@ -10,22 +10,9 @@ Object.entries(envs).forEach((k, v) => {
 })
 
 const config = {
-  dev: false,
-  buildDir: '.nuxt',
-  build: {
-    publicPath: '/assets/'
-  }
+  dev: false
 }
 const nuxt = new Nuxt(config)
 
-function handleRequest(req, res) {
-  res.set('Cache-Control', 'public, max-age=10, s-maxage=10')
-  return new Promise((resolve, reject) => {
-    nuxt.render(req, res, promise => {
-      promise.then(resolve).catch(reject)
-    })
-  })
-}
-
-app.use(handleRequest)
+app.use(nuxt.render)
 exports.ssr = functions.https.onRequest(app)

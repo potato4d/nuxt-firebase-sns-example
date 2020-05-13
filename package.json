@@ -14,19 +14,18 @@
   },
   "dependencies": {
     "autolinker": "^1.6.0",
-    "bulma": "0.6.1",
     "core-js": "3",
     "dayjs": "^1.8.2",
     "firebase": "^6.2.3",
-    "firebase-tools": "^6.5.0",
+    "firebase-admin": "^6.0.0",
+    "firebase-functions": "^3.0.1",
     "htmlspecialchars": "^1.0.5",
     "lodash.clonedeep": "^4.5.0",
     "nuxt": "^2.8.1",
-    "uuid": "^3.3.2",
-    "firebase-admin": "^6.0.0",
-    "firebase-functions": "^3.0.1"
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "firebase-tools": "^8.2.0",
     "prettier": "^1.15.1"
   },
   "prettier": {

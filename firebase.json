@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/client",
+    "public": ".nuxt/dist/hosting",
     "ignore": [
       "firebase.json",
       "**/node_modules/**"
@@ -13,6 +13,6 @@
     ]
   },
   "functions": {
-    "source": "dist/server"
+    "source": "functions"
   }
 }

@@ -2,22 +2,19 @@ firebase-deploy:
 	yarn clean
 	yarn build
 
-	mkdir dist
-
-	rm -rf ./functions/{lib,node_modules}
+	rm -rf ./functions/{lib,.nuxt}
 	rm -f ./functions/{package.json,yarn.lock}
 
 	node ./tools/createFunctionsPackageJson.js
 	cp yarn.lock ./functions/yarn.lock
-	cp -R functions dist/server
-	cp -r node_modules ./dist/server/node_modules
+	cp -r ./.nuxt/ ./functions/.nuxt/
+
+	cp -r ./node_modules/ ./functions/node_modules
 
 	# Copy static files
-	cp -R app/static/ dist/client
-	cp -R .nuxt/dist/client dist/client/_nuxt/
-
-	# Copy server files
-	cp -R .nuxt dist/server
+	mkdir .nuxt/dist/hosting
+	mkdir .nuxt/dist/hosting/_nuxt/
+	cp -r .nuxt/dist/client .nuxt/dist/hosting/_nuxt/
 
 	# Deploy
 	yarn firebase deploy
