@@ -44,19 +44,6 @@ export const mutations = {
   }
 }
 
-// export const mutations = {
-//   setCredential(state, { user }) {
-//     state.user = user
-//   },
-//   savePost(state, { post }) {
-//     state.post = post
-//   },
-//   setIsLoaded(state, next) {
-//     state.isLoaded = !!next
-//   },
-//   ...firebaseMutations
-// }
-
 export const actions = {
   async nuxtServerInit({ commit }) {
     let posts = []
