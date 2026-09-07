@@ -1,14 +1,15 @@
 {
   "hosting": {
-    "public": ".nuxt/dist/hosting",
+    "public": "public",
     "ignore": [
       "firebase.json",
       "**/node_modules/**"
     ],
-    "rewrites": [
+    "redirects": [
       {
-        "source": "!/**/*.@(js|ico|json)",
-        "function": "ssr"
+        "regex": "/.*",
+        "destination": "https://github.com/potato4d/nuxt-firebase-sns-example",
+        "type": 301
       }
     ]
   },
